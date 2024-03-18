@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
+    <meta name="viewport" content="width=device-width" initial-scale=1 maximum-scale=1, user-scalable="no">
+    <title>Slide Block In Whole Screen</title>
+    <link rel="stylesheet" href="/slideblock.css">
+
+
+</head> 
+
+<body>
+    <div class="container">
+        <div class="fill-area"></div>
+        <label for="range" id="range-value">0</label>
+        <input type="range" id="range" name="range" value="0" min="0" max="100" 
+               onmousemove="handleMouseMove(this.value)" 
+               onchange="handleMouseMove(this.value)" />
+    </div>
+    <script src="/slideblock.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    
+    <script>
+        // factors operated
+        const rangeValue=document.querySelector('#range-value');
+        const range=document.querySelector('input[type="range"]');
+        const fillArea=document.querySelector('.fill-area');
+
+        // block slide function
+        function handleMouseMove(value){
+            // hue-rotate is one color filter in css, to define different color
+            const hueRotate="hue-rotate("+value+"deg)";
+
+            // set up process range value
+            rangeValue.textContent=value;
+            // set up color filter
+            rangeValue.style.filter=hueRotate;
+
+            // set up color filter of slide block
+            range.style.filter=hueRotate;
+
+            // display changing background, change width and position of black background
+            fillArea.style.left=value+'vw';
+            fillArea.style.width=100-value+'vw';
+            fillArea.style.filter=hueRotate;
+        }
+    </script>
+
+</body>
+</html>
+

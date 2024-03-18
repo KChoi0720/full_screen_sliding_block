@@ -1,0 +1,82 @@
+/* import google font */
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+
+*{
+    /* initialization */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* gradient container */
+.container{
+    /* full screen */
+    width: 100vw;
+    height: 100vh;
+    /* elastic layout*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* gradient background */
+    background: linear-gradient(to right,#ff5c5c,#ffa860,#e3dc44,#57b02a);
+}
+/* black background covering linear gradient background*/
+.fill-area{
+    width: 100vw;
+    height: 100vh;
+    background: #333838;
+    /* absolute positon */
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    /* inner shadown */
+    box-shadow: inset 3px 3px 5px -1px #111;
+    /* no response to pointer */
+    pointer-events: none;
+}
+/* slide value */
+label{
+    font-family: 'Monoton';
+    font-size: 8rem;
+    position: static;
+    z-index: 1;
+    color: #ec7474;
+    margin: -5rem 0 2rem;
+}
+label::after{
+    content: '%';
+}
+/* slide block */
+input[type=range]{
+    position: static;
+    z-index: 2;
+    width: 50vw;
+    height: 1rem;
+    background: rgba(88,36,36,0.8);
+    /* remove the appearance of slide block */
+    appearance: none;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    /* inner shadow */
+    box-shadow: inset 3px 3px 5px -1px #000;
+}
+/* slide block */
+input[type=range]::-webkit-slider-thumb{
+    width: 4vw;
+    height: 4vw;
+    background: #eee;
+    /* remover the appearance of slide block */
+    appearance: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 5px 5px 8px -1px #000;
+    /* shadow transiting effect */
+    transition: box-shadow 0.3s ease-in-out;
+}
+/* changes of block format when hovering */
+input[type=range]:hover::-webkit-slider-thumb{
+    background: #fff;
+    box-shadow: 3px 3px 5px -1px #000;
+}
